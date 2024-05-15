@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # searchAgents.py
 # ---------------
 # Licensing Information:  You are free to use or extend these projects for
@@ -479,12 +481,14 @@ class ClosestDotSearchAgent(SearchAgent):
         gameState.
         """
         # Here are some useful elements of the startState
-        startPosition = gameState.getPacmanPosition()
-        food = gameState.getFood()
-        walls = gameState.getWalls()
-        problem = AnyFoodSearchProblem(gameState)
+        # Define the search problem
 
-        "*** YOUR CODE HERE ***"
+        """*** YOUR CODE HERE ***"""
+        problem = AnyFoodSearchProblem(gameState) # gameState에서 가장 가까운 food를 리턴하도록 정의
+        return search.astar(problem)  #사전에 정의한 astar를 이용해 가장 가까운 food를 탐색, 결과는 일반적인 greedy 알고리즘과 동일.
+        #Scores:        2360.0
+
+
         util.raiseNotDefined()
 
 class AnyFoodSearchProblem(PositionSearchProblem):
@@ -519,7 +523,8 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         complete the problem definition.
         """
         x,y = state
-
+        return self.food[x][y]
+    
         "*** YOUR CODE HERE ***"
         util.raiseNotDefined()
 
